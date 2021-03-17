@@ -1,8 +1,12 @@
-import mongoose from 'mongoose'
+ 
+import mongoose from "mongoose";
+import config from "./config";
 
-mongoose.connect('mongodb://localhost/companydb',{
-    useNewUrlParser :true,
-    useUnifiedTopology :true
-})
-    .then(db => console.log('DB CONNECT'))
-    .catch(error => console.log(error))
+mongoose
+  .connect(config.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then((db) => console.log(`DB is connected`))
+  .catch((err) => console.log(err));
